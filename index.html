@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag-elements</title>
+</head>
+
+<style>
+.container{
+    display: flex;
+   
+}
+.container .element{
+    width: 100px;
+    height: 100px;
+    margin: 2px;
+}
+h1{
+    color: rgb(7, 7, 7);
+}
+
+</style>
+
+<body onload="move('element')" style="background-color: aqua;">
+    <div class="container">
+<div class="element" ondragover="drag()" style="background: rgb(255, 255, 255);width: 500px;height: 300px;color: black;" draggable="true" >
+    <h1>Draggable Div</h1>
+    <img src="https://cdn-icons-png.flaticon.com/512/2926/2926322.png" style="width: 20%;margin-left: 30%;"/>
+    <p>This is a draggable div which is created using HTML CSS & javascript.You can move this div anywhere on the document</p>
+
+</div>
+
+
+
+
+    </div>
+<script>
+
+    
+    function drag(e){
+
+        e.preventDefault()
+
+        
+
+
+    }
+
+
+
+
+function move(element){
+    var elementchoosen;
+
+    const elements=document.querySelectorAll(".element")
+
+
+
+
+    elements.forEach(element=>{
+
+
+
+element.addEventListener("dragstart", function(event) {
+  
+   event.dataTransfer.setData("Text",event.target.innerText)
+})
+
+
+
+element.addEventListener("drop",function(event){
+
+event.preventDefault()
+
+const data=event.dataTransfer.getData("Text")
+
+
+
+alert(`elements are dragged on ${data}`)
+
+
+})
+
+
+
+   element.addEventListener("dragover",function(e){
+    e.preventDefault()
+
+
+   
+   
+   })
+    
+        element.addEventListener("mousedown",()=>{
+
+            element.style.position="absolute"
+
+            elementchoosen=element
+
+
+
+
+            document.onmousemove=(e)=>{
+                var x=e.pageX
+                var y=e.pageY
+              
+
+               elementchoosen.style.left=x+"px"
+               elementchoosen.style.top=y+"px"
+           
+            }
+   
+             
+        }
+            
+        )
+    })
+     
+    document.onmouseup=function(e){
+
+       
+    elementchoosen=null
+
+   
+
+    const div=document.querySelectorAll(".element")
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>
